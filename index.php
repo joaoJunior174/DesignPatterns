@@ -2,6 +2,9 @@
 
 include_once './Factory/BilletPayment.php';
 include_once './Factory/CreditCardPayment.php';
+include_once './Builder/ComputerBuilder.php';
+include_once './Builder/ComputerDirector.php';
+
 //function to simulate factory pattern
 function simulateFactory() {
     //simulating a post data for billet
@@ -24,6 +27,23 @@ function simulateFactory() {
     $creditPayment->integratePaymentOMS();
 }
 
-simulateFactory();
+function simulateBuilder() {
+
+    $computerBuilder = new ComputerBuilder();
+    $computerDirector = new ComputerDirector();
+    $computerDirector->buildAmdPcGamer($computerBuilder);
+    $gamerPC = $computerBuilder->getComputer();
+    $computerDirector->buildOfficeComputer($computerBuilder);
+    $officePc = $computerBuilder->getComputer();
+
+    print(json_encode($gamerPC));
+    print("<br/>");
+    print(json_encode($officePc));
+
+}
+
+//simulateFactory();
+simulateBuilder();
+
 
 ?>
