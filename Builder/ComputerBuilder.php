@@ -13,7 +13,7 @@ class ComputerBuilder implements Builder
 
     public function reset()
     {
-        $this->computer = new Computer();
+        $this->computer = new ComputerPrototype();
     }
 
     public function setCoreNumbers($numberCore = 2)
